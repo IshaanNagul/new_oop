@@ -1,0 +1,53 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+class file
+{
+    string name;
+    int salary, id;
+
+public:
+    void write_data()
+    {
+        ofstream obj1;
+        obj1.open("info.txt");
+        cout << "FILE OPEN IN WRITTING MODE" << endl;
+        cout << "enter id of employee ";
+        cin >> id;
+        obj1 << id;
+        cout << "enter name of employee ";
+        cin >> name;
+        obj1 << name;
+        cout << "enter salary of employee ";
+        cin >> salary;
+        obj1 << salary;
+        obj1.close();
+    }
+    void read_data()
+    {
+        ifstream obj2;
+        obj2.open("info.txt");
+        cout << "\nFILE OPEN IN READING MODE" << endl;
+        obj2 >> id;
+        obj2 >> name;
+        obj2 >> salary;
+        cout << "ID :" << id << endl;
+        cout << "NAME:" << name << endl;
+        cout << "SALARY :" << salary << endl;
+        obj2.close();
+    }
+};
+int main()
+{
+    int n;
+    cout << "no. of employee ";
+    cin >> n;
+    file obj[n];
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\ninformation of " << i+1 << " employee\n" << endl;
+        obj[i].write_data();
+        obj[i].read_data();
+    }
+    return 0;
+}
